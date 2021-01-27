@@ -4,7 +4,7 @@ Created for the Global Game Jam Vancouver 2021.
 
 ## Tech requirements
 
-- Unity v. 2020
+- Unity 2020.2.2
 
 ## Team
 
