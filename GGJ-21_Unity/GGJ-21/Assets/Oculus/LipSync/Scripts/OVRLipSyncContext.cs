@@ -82,6 +82,9 @@ public class OVRLipSyncContext : OVRLipSyncContextBase
         {
             hasDebugConsole = consoles[0];
         }
+
+        //ROBERT CUSTOM CODE
+        origPos = cube.position;
     }
 
     /// <summary>
@@ -177,6 +180,7 @@ public class OVRLipSyncContext : OVRLipSyncContextBase
         }
     }
 
+   
     /// <summary>
     /// Run processes that need to be updated in our game thread
     /// </summary>
@@ -188,6 +192,33 @@ public class OVRLipSyncContext : OVRLipSyncContextBase
         }
         laughterScore = this.Frame.laughterScore;
         DebugShowVisemesAndLaughter();
+
+
+        //ROBERT CUSTOM CODE
+        //MoveCube();
+        //DebugCanvas.DebugLog(GetMicVolume().ToString());
+    }
+
+    //ROBERT CUSTOM CODE
+    public Transform cube;
+    private Vector3 origPos;
+
+    public float GetMicVolume()
+    {
+        float volume = 0;
+        int count = (int)(50.0f * this.Frame.Visemes[0]);
+        for (int c = 0; c < count; c++)
+        {
+            volume++;
+        }
+        volume = (50 - volume)/50;
+
+        return volume;
+    }
+
+    private void MoveCube()
+    {
+        cube.transform.position = new Vector3(origPos.x, origPos.y + GetMicVolume(), origPos.z);
     }
 
     /// <summary>
