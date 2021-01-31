@@ -46,7 +46,7 @@ public class ExhaleInput : MonoBehaviour
             micList += "Mic name: " + device + "\n";
             if (firstMicName == "Built-in Microphone") firstMicName = device;
         }
-        DebugCanvas.DebugLog(micList);
+        //DebugCanvas.DebugLog(micList);
 
         /*
         AudioSource audioSource = GetComponent<AudioSource>();

@@ -1348,7 +1348,7 @@ public class OVRManager : MonoBehaviour
 		//For now, in XR SDK, only initialize if OVRPlugin is initialized.
 		InitOVRManager();
 #else
-		if (OVRPlugin.initialized)
+		if (!OVRPlugin.initialized)
 			InitOVRManager();
 #endif
 	}

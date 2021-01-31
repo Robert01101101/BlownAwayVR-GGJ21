@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RobertTestScene.unity
-    guid: 7a51d154cb54fef4caef5c15e982bfa1
+    path: Assets/Scenes/0_Base.unity
+    guid: 71d2248fd850e0349ac83bdb7a9b6168
+  - enabled: 1
+    path: Assets/Scenes/1_Paperboat.unity
+    guid: 1438b5a01a0317845accbcb69a97b599
+  - enabled: 1
+    path: Assets/Scenes/2_Desertyacht.unity
+    guid: 613da629f7eddbd49b0efa5cc901f8da
+  - enabled: 1
+    path: Assets/Scenes/3_Balloon.unity
+    guid: 42eb9ab17a09c094a8420c1ffa752788
+  - enabled: 1
+    path: Assets/Scenes/4_Rocket.unity
+    guid: cb57dc31085dad64e9fc5687c9fd1527
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 07b1869450d588448800fac3d7605333, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: fb5cc94a4658ec24a97fae1f1164cbef, type: 2}

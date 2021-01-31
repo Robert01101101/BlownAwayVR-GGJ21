@@ -82,9 +82,6 @@ public class OVRLipSyncContext : OVRLipSyncContextBase
         {
             hasDebugConsole = consoles[0];
         }
-
-        //ROBERT CUSTOM CODE
-        origPos = cube.position;
     }
 
     /// <summary>
@@ -192,16 +189,7 @@ public class OVRLipSyncContext : OVRLipSyncContextBase
         }
         laughterScore = this.Frame.laughterScore;
         DebugShowVisemesAndLaughter();
-
-
-        //ROBERT CUSTOM CODE
-        //MoveCube();
-        //DebugCanvas.DebugLog(GetMicVolume().ToString());
     }
-
-    //ROBERT CUSTOM CODE
-    public Transform cube;
-    private Vector3 origPos;
 
     public float GetMicVolume()
     {
@@ -214,11 +202,6 @@ public class OVRLipSyncContext : OVRLipSyncContextBase
         volume = (50 - volume)/50;
 
         return volume;
-    }
-
-    private void MoveCube()
-    {
-        cube.transform.position = new Vector3(origPos.x, origPos.y + GetMicVolume(), origPos.z);
     }
 
     /// <summary>
