@@ -39,8 +39,7 @@ public class TeleportPoint : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float intensity = Mathf.SmoothStep(fullIntensity, lowIntensity, (Time.time - lastLookAtTime) * dimmingSpeed);
-        GetComponent<MeshRenderer>().material.SetFloat("_Intensity", intensity);
+
 	}
 
     public void OnLookAt()

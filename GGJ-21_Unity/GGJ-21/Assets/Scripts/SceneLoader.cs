@@ -11,14 +11,17 @@ public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance = null;
     public OVRScreenFade screenFade;
-    private string lastSceneName;
 
     //// BUILD INDEXES ////
-    public readonly static int _BASE = 0;
-    public readonly static int PAPERBOAT = 1;
-    public readonly static int DESERTYACHT = 2;
-    public readonly static int BALLOON = 3;
-    public readonly static int ROCKET = 4;
+    public readonly static int BASE = 0;
+    public readonly static int PAPERBOAT_INTRO = 1;
+    public readonly static int PAPERBOAT_GAME = 2;
+    public readonly static int DESERTYACHT_INTRO = 3;
+    public readonly static int DESERTYACHT_GAME = 4;
+    public readonly static int BALLOON_INTRO = 5;
+    public readonly static int BALLOON_GAME = 6;
+    public readonly static int ROCKET_INTRO = 7;
+    public readonly static int ROCKET_GAME = 8;
 
     //Scenes
     [System.NonSerialized]
@@ -72,8 +75,11 @@ public class SceneLoader : MonoBehaviour
             vehicle = vf.transform;
             transform.parent = vehicle;
         }
+
+        //Time.timeScale = 1;
     }
 
+    /////////////////////////////////////////////////////////////////// Teleport  ///////////////////////////////////////////////////////
     public void Teleport(Vector3 target, bool fade=true)
     {
         if (fade)
@@ -83,6 +89,9 @@ public class SceneLoader : MonoBehaviour
         {
             transform.position = target;
         }
+        Debug.Log("Teleported to: " + target);
+        Debug.Log("Position: " + transform.position);
+        Debug.Log("Local Position: " + transform.localPosition);
     }
 
     IEnumerator TeleportFadeRoutine(Vector3 target)
@@ -129,6 +138,7 @@ public class SceneLoader : MonoBehaviour
     {
         screenFade.FadeOut();
         yield return new WaitForSeconds(2);
+        //Time.timeScale = 0;
         SceneManager.UnloadSceneAsync(currentSceneIdx);
         currentSceneIdx++;
         SceneManager.LoadScene(currentSceneIdx, LoadSceneMode.Additive);
@@ -149,7 +159,7 @@ public class SceneLoader : MonoBehaviour
         {
             transform.parent = null;
             Destroy(vehicle.gameObject);
-            SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByBuildIndex(_BASE));
+            SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByBuildIndex(BASE));
             vehicle = null;
         }
     }

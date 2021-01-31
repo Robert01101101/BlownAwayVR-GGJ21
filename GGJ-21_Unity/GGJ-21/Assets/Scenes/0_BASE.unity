@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 1269942587}
     - target: {fileID: 750355201136791272, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
       propertyPath: sceneToLoad
-      value: 1_Paperboat
+      value: 1_Paperboat_Intro
       objectReference: {fileID: 0}
     - target: {fileID: 4904559947333487037, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
       propertyPath: fadeTime
@@ -196,6 +196,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
+--- !u!1 &380597009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4904559947339293479, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
+  m_PrefabInstance: {fileID: 380597008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &380597010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4904559947333244635, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
+  m_PrefabInstance: {fileID: 380597008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &380597011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380597009}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085d9ec7bb5e55f48b879d93931f553e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraRig: {fileID: 380597010}
+  CharacterController: {fileID: 0}
+  PlayerController: {fileID: 0}
+--- !u!114 &380597012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380597009}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcbed738e5f16548bc6b4284038f7d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnableMovementDuringReady: 1
+  EnableMovementDuringAim: 1
+  EnableMovementDuringPreTeleport: 1
+  EnableMovementDuringPostTeleport: 1
+  EnableRotationDuringReady: 1
+  EnableRotationDuringAim: 1
+  EnableRotationDuringPreTeleport: 1
+  EnableRotationDuringPostTeleport: 1
+  TeleportDestinationPrefab: {fileID: 0}
+  TeleportDestinationLayer: 0
+  AimCollisionType: 0
+  UseCharacterCollisionData: 0
+  AimCollisionRadius: 0
+  AimCollisionHeight: 0
 --- !u!114 &1269942587 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4904559947333487037, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
