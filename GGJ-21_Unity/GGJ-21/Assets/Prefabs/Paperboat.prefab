@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2379882209565045183}
-  m_LocalRotation: {x: -0.5261565, y: 0.17614251, z: -0.108049355, w: 0.82489914}
+  m_LocalRotation: {x: -0.53492796, y: 0.08298369, z: -0.04865547, w: 0.8394036}
   m_LocalPosition: {x: -0.699, y: 0.696, z: -2.454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8480050932552945423}
   m_Father: {fileID: 2894961412370225856}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -56.097, y: 46.455, z: -40.685}
+  m_LocalEulerAnglesHint: {x: -62.869, y: 24.812, z: -21.95}
 --- !u!114 &626744319685576413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handDetection: {fileID: 3217540389503870405}
+  rotationAxisTransform: {fileID: 0}
 --- !u!1 &2660943213479108751
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +90,7 @@ GameObject:
   - component: {fileID: 2894961412370225859}
   - component: {fileID: 2894961412370225858}
   - component: {fileID: 2894961412370225857}
+  - component: {fileID: 1221982597230258842}
   m_Layer: 0
   m_Name: Paperboat
   m_TagString: Untagged
@@ -126,7 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollingPlaneWater: {fileID: 0}
-  moveSpeed: 2
+  rudder: {fileID: 626744319685576413}
+  idleSpeed: 1
+  maxAcceleratedSpeed: 10
+  accelerationTime: 0.75
+  deccelerationValue: 1.5
   rotateSpeed: 100
 --- !u!114 &2894961412370225858
 MonoBehaviour:
@@ -156,6 +162,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1221982597230258842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2894961412370225861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61a6d6300bb54353841a1771a42385b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPoints: 3
+  submergingSpeed: 0.25
+  reloadTime: 3
+  materialToAssignOnSink: {fileID: 2100000, guid: fbd5ba3e69aaf48d9b687b4ba8aacecf, type: 2}
 --- !u!1 &3917114563705487524
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,10 +268,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3917114563705487524}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -462981019419857548, guid: e63ef6bb086f44ab98c61bcbef4d5961, type: 3}
 --- !u!1 &5456338427497555741
@@ -484,9 +506,9 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8023371573796978377}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4579454407841743219, guid: e63ef6bb086f44ab98c61bcbef4d5961, type: 3}
