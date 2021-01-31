@@ -29,6 +29,6 @@ public class DebugCanvas : MonoBehaviour
 
     public static void DebugLog(string message)
     {
-        //canvasText.text = message;
+        canvasText.text = message;
     }
 }

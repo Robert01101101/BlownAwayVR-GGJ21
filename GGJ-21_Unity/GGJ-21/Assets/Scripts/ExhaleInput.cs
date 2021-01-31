@@ -62,7 +62,7 @@ public class ExhaleInput : MonoBehaviour
         strength = oVRLipSyncContext.GetMicVolume();
         isExhaling = strength > 0;
 
-        DebugCanvas.DebugLog("isExhaling: " + isExhaling + "\n strength: " + strength);
+        //DebugCanvas.DebugLog("isExhaling: " + isExhaling + "\n strength: " + strength);
     }
 
     //Not using for now, but this might allow us to read all sounds, as well as maybe access the headphone mic
