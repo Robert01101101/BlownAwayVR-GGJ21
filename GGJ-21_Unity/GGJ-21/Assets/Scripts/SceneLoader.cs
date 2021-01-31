@@ -3,33 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//
+// MUST BE ATTACHED TO PLAYERCTRL
+//
+
 public class SceneLoader : MonoBehaviour
 {
-    //// This Script will be used to keep everything together. ////
-
     public static SceneLoader instance = null;
     public OVRScreenFade screenFade;
     private string lastSceneName;
 
     //// BUILD INDEXES ////
     public readonly static int _BASE = 0;
-    public readonly static int PAPERBOAT_INTRO = 1;
-    public readonly static int PAPERBOAT_GAME = 2;
-    public readonly static int DESERTYACHT_INTRO = 3;
-    public readonly static int DESERTYACHT_GAME = 4;
-    public readonly static int BALLOON_INTRO = 5;
-    public readonly static int BALLOON_GAME = 6;
-    public readonly static int ROCKET_INTRO = 7;
-    public readonly static int ROCKET_GAME = 8;
+    public readonly static int PAPERBOAT = 1;
+    public readonly static int DESERTYACHT = 2;
+    public readonly static int BALLOON = 3;
+    public readonly static int ROCKET = 4;
 
     //Scenes
     [System.NonSerialized]
-    public int currentSceneIdx = PAPERBOAT_INTRO; //<--- Set first Scene to load
-    private Scene curScene;
+    public int currentSceneIdx;
+    public string sceneToLoad;
     private bool sceneReloading = false;
 
     //booleans
+    [System.NonSerialized]
     public bool paused;
+
+    Transform vehicle;
 
 
     ///////////////////////////////////////////////////////////// AWAKE () //////////////////////////////////////////////////////////
@@ -46,9 +47,8 @@ public class SceneLoader : MonoBehaviour
         paused = false;
 
         //Set curScene to be active Scene (_Base)
-        curScene = SceneManager.GetActiveScene();
-
-        SceneManager.LoadScene(currentSceneIdx, LoadSceneMode.Additive);
+        currentSceneIdx = SceneManager.GetSceneByName(sceneToLoad).buildIndex;
+        SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
 
         //Listen for Scene Loads & Unloads
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
@@ -61,14 +61,37 @@ public class SceneLoader : MonoBehaviour
         currentSceneIdx = scene.buildIndex;
         Debug.Log("Game Manager -> Scene Loaded: idx=" + currentSceneIdx + ", name=" + scene.name + ", loadMode=" + mode);
 
-        Teleport(GameObject.Find("SpawnPoint").transform.position);
-        SceneManager.SetActiveScene(scene);
+        //Position player & begin fade
+        Teleport(GameObject.Find("SpawnPoint").transform.position, false);
         screenFade.FadeIn();
+
+        //check for vehicle
+        VehicleFlag vf = GameObject.FindObjectOfType<VehicleFlag>();
+        if (vf != null)
+        {
+            vehicle = vf.transform;
+            transform.parent = vehicle;
+        }
     }
 
-    private void Teleport(Vector3 target)
+    public void Teleport(Vector3 target, bool fade=true)
     {
+        if (fade)
+        {
+            StartCoroutine(TeleportFadeRoutine(target));
+        } else
+        {
+            transform.position = target;
+        }
+    }
+
+    IEnumerator TeleportFadeRoutine(Vector3 target)
+    {
+        screenFade.FadeOut();
+        yield return new WaitForSeconds(2);
         transform.position = target;
+        yield return new WaitForSeconds(.2f);
+        screenFade.FadeIn();
     }
 
     /////////////////////////////////////////////////////////////// OnSceneFinishedUnloading () /////////////////////////////////////////
@@ -86,6 +109,7 @@ public class SceneLoader : MonoBehaviour
     /////////////////////////////////////////////////////////////////////////////////////////// LoadScene (newSceneToLoad) ####################
     public void LoadScene(int newSceneToLoad)
     {
+        DetachPlayerFromVehicle();
         SceneManager.UnloadSceneAsync(currentSceneIdx);
         SceneManager.LoadScene(newSceneToLoad, LoadSceneMode.Additive);
     }
@@ -95,6 +119,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (!loadingNextScene)
         {
+            DetachPlayerFromVehicle();
             loadingNextScene = true;
             StartCoroutine(LoadNextSceneRoutine());
         }
@@ -106,14 +131,26 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(2);
         SceneManager.UnloadSceneAsync(currentSceneIdx);
         currentSceneIdx++;
-        yield return SceneManager.LoadSceneAsync(currentSceneIdx, LoadSceneMode.Additive);
+        SceneManager.LoadScene(currentSceneIdx, LoadSceneMode.Additive);
         loadingNextScene = false;
     }
 
     public void ReloadLevel()
     {
+        DetachPlayerFromVehicle();
         sceneReloading = true;
         SceneManager.UnloadSceneAsync(currentSceneIdx);
         Debug.Log("GameManager -> Reload Level");
+    }
+    
+    private void DetachPlayerFromVehicle()
+    {
+        if (vehicle != null)
+        {
+            transform.parent = null;
+            Destroy(vehicle.gameObject);
+            SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByBuildIndex(_BASE));
+            vehicle = null;
+        }
     }
 }
