@@ -6,6 +6,10 @@ Created for the Global Game Jam Vancouver 2021.
 
 - Unity 2020.2.2
 
+## Extra stuff
+
+- Hi!
+
 ## Team
 
 - Leo Danenkov
