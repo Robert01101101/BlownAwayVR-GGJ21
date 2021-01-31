@@ -66,6 +66,7 @@ public class SceneLoader : MonoBehaviour
 
         //Position player & begin fade
         Teleport(GameObject.Find("SpawnPoint").transform.position, false);
+        SceneManager.SetActiveScene(scene);
         screenFade.FadeIn();
 
         //check for vehicle
