@@ -7,6 +7,9 @@ namespace Utils
         private Vector3 prevMouseDirection;
 
         private Vector3 prevMousePosition;
+        
+        [SerializeField]
+        private bool allowMovement = default;
     
         [SerializeField]
         private float movementSpeed = default;
@@ -34,14 +37,17 @@ namespace Utils
             angle.z = 0f;
             Camera.main.transform.rotation = Quaternion.Euler(angle);
 
-            if (Input.GetKey(KeyCode.W))
+            if (allowMovement)
             {
-                Camera.main.transform.Translate(Camera.main.transform.forward*movementSpeed*Time.deltaTime, Space.World);
-            }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    Camera.main.transform.Translate(Camera.main.transform.forward*movementSpeed*Time.deltaTime, Space.World);
+                }
 
-            if (Input.GetKey(KeyCode.S))
-            {
-                Camera.main.transform.Translate(-Camera.main.transform.forward*movementSpeed*Time.deltaTime, Space.World);
+                if (Input.GetKey(KeyCode.S))
+                {
+                    Camera.main.transform.Translate(-Camera.main.transform.forward*movementSpeed*Time.deltaTime, Space.World);
+                }
             }
         }
     }
