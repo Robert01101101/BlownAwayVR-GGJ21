@@ -13,14 +13,18 @@ public class SceneLoader : MonoBehaviour
 
     //// BUILD INDEXES ////
     public readonly static int _BASE = 0;
-    public readonly static int PAPERBOAT = 1;
-    public readonly static int DESERTYACHT = 2;
-    public readonly static int BALLOON = 3;
-    public readonly static int ROCKET = 4;
+    public readonly static int PAPERBOAT_INTRO = 1;
+    public readonly static int PAPERBOAT_GAME = 2;
+    public readonly static int DESERTYACHT_INTRO = 3;
+    public readonly static int DESERTYACHT_GAME = 4;
+    public readonly static int BALLOON_INTRO = 5;
+    public readonly static int BALLOON_GAME = 6;
+    public readonly static int ROCKET_INTRO = 7;
+    public readonly static int ROCKET_GAME = 8;
 
     //Scenes
     [System.NonSerialized]
-    public int currentSceneIdx = PAPERBOAT; //<--- Set first Scene to load
+    public int currentSceneIdx = PAPERBOAT_INTRO; //<--- Set first Scene to load
     private Scene curScene;
     private bool sceneReloading = false;
 
