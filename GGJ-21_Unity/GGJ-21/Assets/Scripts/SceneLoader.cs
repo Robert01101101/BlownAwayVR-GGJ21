@@ -66,6 +66,8 @@ public class SceneLoader : MonoBehaviour
 
         //Position player & begin fade
         Teleport(GameObject.Find("SpawnPoint").transform.position, false);
+        SceneManager.SetActiveScene(scene);
+
         StartCoroutine(FinishSceneLoading());
 
         //Time.timeScale = 1;
