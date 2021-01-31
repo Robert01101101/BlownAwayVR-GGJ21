@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9046242157256924294}
   - component: {fileID: 4641349272921436951}
   - component: {fileID: 4893504347394840387}
+  - component: {fileID: 7382199010654101352}
   m_Layer: 6
   m_Name: Breathing
   m_TagString: Untagged
@@ -4819,6 +4820,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 9046242157256924294}
   maxSpeed: 1
+--- !u!114 &7382199010654101352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182809845244264479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05db727d8c06d4fe4bc2f75c1a67fe05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdToGenerate: 0.2
+  distance: 3
+  radius: 1
 --- !u!1 &4904559945803403809
 GameObject:
   m_ObjectHideFlags: 0
