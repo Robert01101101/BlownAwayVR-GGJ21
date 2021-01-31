@@ -66,6 +66,16 @@ public class SceneLoader : MonoBehaviour
 
         //Position player & begin fade
         Teleport(GameObject.Find("SpawnPoint").transform.position, false);
+        StartCoroutine(FinishSceneLoading());
+
+        //Time.timeScale = 1;
+    }
+
+    IEnumerator FinishSceneLoading()
+    {
+        //teleport again to ensure teleport works (Super shitty bugfix)
+        yield return new WaitForEndOfFrame();
+        Teleport(GameObject.Find("SpawnPoint").transform.position, false);
         screenFade.FadeIn();
 
         //check for vehicle
@@ -75,8 +85,6 @@ public class SceneLoader : MonoBehaviour
             vehicle = vf.transform;
             transform.parent = vehicle;
         }
-
-        //Time.timeScale = 1;
     }
 
     /////////////////////////////////////////////////////////////////// Teleport  ///////////////////////////////////////////////////////
