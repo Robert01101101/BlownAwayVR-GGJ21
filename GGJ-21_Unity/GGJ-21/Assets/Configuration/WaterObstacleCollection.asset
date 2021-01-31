@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4ace33488c644a9a141d92da49cdbf, type: 3}
+  m_Name: WaterObstacleCollection
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 101478, guid: fadc87bb4134def40b0042377e1393da, type: 3}
+  - {fileID: 183502, guid: fa291e337ddf79146b490d9e54f86999, type: 3}
+  - {fileID: 197720, guid: 8d690e954c1c43f4e936406ce1a98864, type: 3}
+  - {fileID: 149002, guid: 2f8fbeb866feb1546a8d6bbbd30947f0, type: 3}
+  - {fileID: 196858, guid: 244379077a5577e49aaf0f15de6cae10, type: 3}
+  - {fileID: 136044, guid: 4583164d0fa037f46864d7f285d50e66, type: 3}
+  - {fileID: 111732, guid: 7117591b4c6497a46af071fd9e617304, type: 3}
+  - {fileID: 124728, guid: 4620e0de839e64a438b1ac5770a0c665, type: 3}
+  - {fileID: 178096, guid: 48c1a87ab27d49248b3278831f74e94f, type: 3}
+  - {fileID: 114524, guid: faedbab2fd1d8c14781470cb954e4c96, type: 3}
+  materialToAssign: {fileID: 2100000, guid: 5f2b6f0e2b1554e6cb20930a3e3228ab, type: 2}
