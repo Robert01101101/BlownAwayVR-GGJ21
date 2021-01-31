@@ -36,22 +36,22 @@ namespace ScrollingPlane
         {
             // This will use boat's forward direction and therefore component must be on the boat
             Vector2 scrollDir = new Vector2(transform.forward.x, transform.forward.z);
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) || OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
             {
                 MoveWorld(scrollDir);
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S) || OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
             {
                 MoveWorld(-scrollDir);
             }
 
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) || OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x < -0.5f)
             {
                 transform.Rotate(transform.up, -rotateSpeed*Time.deltaTime);
             }
             
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) || OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x > 0.5f)
             {
                 transform.Rotate(transform.up, rotateSpeed*Time.deltaTime);
             }
