@@ -65,18 +65,6 @@ public class ExhaleInput : MonoBehaviour
         DebugCanvas.DebugLog("isExhaling: " + isExhaling + "\n strength: " + strength);
     }
 
-    public static void SetMin(float minVal)
-    {
-
-    }
-
-    public static void SetMax(float minVal)
-    {
-
-    }
-
-
-
     //Not using for now, but this might allow us to read all sounds, as well as maybe access the headphone mic
     //from: https://forum.unity.com/threads/check-current-microphone-input-volume.133501/
     /*
