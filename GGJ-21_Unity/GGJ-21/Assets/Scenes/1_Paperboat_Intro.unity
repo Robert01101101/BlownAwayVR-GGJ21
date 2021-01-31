@@ -1963,7 +1963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e63ef6bb086f44ab98c61bcbef4d5961, type: 3}
       propertyPath: m_Name
-      value: PaperPlane
+      value: PaperBoat
       objectReference: {fileID: 0}
     - target: {fileID: 8513859187771203891, guid: e63ef6bb086f44ab98c61bcbef4d5961, type: 3}
       propertyPath: m_IsActive
@@ -1971,6 +1971,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e63ef6bb086f44ab98c61bcbef4d5961, type: 3}
+--- !u!1 &1965671621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e63ef6bb086f44ab98c61bcbef4d5961, type: 3}
+  m_PrefabInstance: {fileID: 1965671620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1965671622
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965671621}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a81a0c2ab509d4c34b865b7f91bb8396, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1965671623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7029948723529949830, guid: e63ef6bb086f44ab98c61bcbef4d5961, type: 3}
+  m_PrefabInstance: {fileID: 1965671620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1965671624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965671621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bcb8a0df6ce6497e9e20623999f0c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1965671622}
+  delayBeforeTransition: 5
+--- !u!54 &1965671625
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965671621}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1965671627
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965671623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06819384, y: 0.2543328, z: 0.054936536}
+  m_Center: {x: -0.006398933, y: 0.098880194, z: 0.04911854}
 --- !u!1001 &1968298000
 PrefabInstance:
   m_ObjectHideFlags: 0
