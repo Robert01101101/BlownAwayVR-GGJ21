@@ -62,6 +62,7 @@ public class SceneLoader : MonoBehaviour
         Debug.Log("Game Manager -> Scene Loaded: idx=" + currentSceneIdx + ", name=" + scene.name + ", loadMode=" + mode);
 
         Teleport(GameObject.Find("SpawnPoint").transform.position);
+        SceneManager.SetActiveScene(scene);
         screenFade.FadeIn();
     }
 
@@ -105,7 +106,7 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(2);
         SceneManager.UnloadSceneAsync(currentSceneIdx);
         currentSceneIdx++;
-        SceneManager.LoadScene(currentSceneIdx, LoadSceneMode.Additive);
+        yield return SceneManager.LoadSceneAsync(currentSceneIdx, LoadSceneMode.Additive);
         loadingNextScene = false;
     }
 
