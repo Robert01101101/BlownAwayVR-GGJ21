@@ -11,6 +11,9 @@ namespace ScrollingPlane
     {
         [SerializeField] 
         private ScrollingPlaneWater scrollingPlaneWater = default;
+        
+        [SerializeField]
+        private Rudder rudder = default;
 
         [SerializeField] 
         private float idleSpeed = 2f;
@@ -69,6 +72,12 @@ namespace ScrollingPlane
             if (Input.GetKey(KeyCode.D) || OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x > 0.5f)
             {
                 transform.Rotate(transform.up, rotateSpeed*Time.deltaTime);
+            }
+
+            float rudderDir = Mathf.Clamp(rudder.direction, -1f, 1f);
+            if (rudderDir != 0f)
+            {
+                transform.Rotate(transform.up, rudderDir*rotateSpeed*Time.deltaTime);
             }
         }
 

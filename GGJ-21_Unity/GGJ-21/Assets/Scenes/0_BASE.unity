@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 1269942587}
     - target: {fileID: 750355201136791272, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
       propertyPath: sceneToLoad
-      value: RobertTestScene
+      value: 1_Paperboat_Intro
       objectReference: {fileID: 0}
     - target: {fileID: 4904559947333487037, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
       propertyPath: fadeTime
