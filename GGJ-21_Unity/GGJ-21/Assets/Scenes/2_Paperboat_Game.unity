@@ -417,6 +417,7 @@ MonoBehaviour:
   minDistance: 40
   maxDistance: 80
   sideStepRadius: 15
+  assignWaterMaterial: 1
 --- !u!114 &2124919380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorWater: {fileID: 1873029941}
-  gameTime: 30
+  gameTime: 180
   gapBeforeEndingSpawn: 3
   obstacleSpawner: {fileID: 2124919379}
   endingPrefab: {fileID: 8935120610840691851, guid: e2de9ef4033454e82b74c3845fb0ee4b, type: 3}

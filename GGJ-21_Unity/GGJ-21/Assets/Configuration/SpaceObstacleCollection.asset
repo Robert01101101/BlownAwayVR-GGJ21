@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4ace33488c644a9a141d92da49cdbf, type: 3}
+  m_Name: SpaceObstacleCollection
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 6248585791321504583, guid: 827040363f1ea45528abe3b3fe1bca11, type: 3}
+  - {fileID: 1777921221962407296, guid: 56eda7a1252294e759198b802274d6e6, type: 3}
+  - {fileID: 9162470511214525189, guid: f550a9b61fe164d709a6e262ec6f9339, type: 3}
+  - {fileID: 1881886996272203498, guid: 853ab755dd641499ea4435d1440f3432, type: 3}
+  - {fileID: 6552970301064466447, guid: 4c93b3fbae9824f49b41bdc0efe085bc, type: 3}
+  - {fileID: 7808130584760218504, guid: 11659106270bd4ccbb29c21f9e274970, type: 3}
+  - {fileID: 1161944675436081563, guid: 7797eefdd39254d0dba3250075bf3e2e, type: 3}
+  - {fileID: 5680110581934079125, guid: 69c0021e407ef465794cb6776c491e44, type: 3}
+  - {fileID: 2776253303421807988, guid: 630450f100dea481babd31b078cfd6ef, type: 3}
+  - {fileID: 3432544559666521922, guid: 0b0b03abd3afd49eba712cac1c22dcf2, type: 3}
+  - {fileID: 891148424209462603, guid: caa1b5f297ae64cd7801dc39e20e5ea7, type: 3}
+  materialToAssign: {fileID: 2100000, guid: 0411386b5758c4d508623c9f1ca537a5, type: 2}
