@@ -43,7 +43,7 @@ namespace ScrollingPlane
             currentMoveSpeed = idleSpeed;
         }
 
-        private void MoveWorld(Vector2 scrollDir)
+        private void MoveWaterWorld(Vector2 scrollDir)
         {
             // Move the plane
             scrollingPlaneWater.Move(scrollDir, currentMoveSpeed*Time.deltaTime);
@@ -58,11 +58,29 @@ namespace ScrollingPlane
             }
         }
 
+        private void MoveWorld(Vector2 scrollDir)
+        {
+            // Move all the objects
+            List<ScrollingObject> scrollingObjects = ScrollingObjectRegistry.GetScrollingObjects();
+            foreach (ScrollingObject sceneObject in scrollingObjects)
+            {
+                sceneObject.Move(scrollDir, currentMoveSpeed * Time.deltaTime);
+            }
+        }
+
         private void InputAndMoveTick()
         {
             // This will use boat's forward direction and therefore component must be on the boat
             Vector2 scrollDir = new Vector2(transform.forward.x, transform.forward.z);
-            MoveWorld(scrollDir);
+            if (scrollingPlaneWater != null)
+            {
+                MoveWaterWorld(scrollDir);
+            }
+            else
+            {
+                MoveWorld(scrollDir);
+            }
+            
 
             if (Input.GetKey(KeyCode.A) || OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x < -0.5f)
             {
@@ -74,10 +92,13 @@ namespace ScrollingPlane
                 transform.Rotate(transform.up, rotateSpeed*Time.deltaTime);
             }
 
-            float rudderDir = Mathf.Clamp(rudder.direction, -1f, 1f);
-            if (rudderDir != 0f)
+            if (rudder != null)
             {
-                transform.Rotate(transform.up, rudderDir*rotateSpeed*Time.deltaTime);
+                float rudderDir = Mathf.Clamp(rudder.direction, -1f, 1f);
+                if (rudderDir != 0f)
+                {
+                    transform.Rotate(transform.up, rudderDir*rotateSpeed*Time.deltaTime);
+                }
             }
         }
 

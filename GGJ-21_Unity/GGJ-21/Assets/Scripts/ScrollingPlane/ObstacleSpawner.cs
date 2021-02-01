@@ -24,6 +24,9 @@ namespace ScrollingPlane
         [SerializeField] 
         private float sideStepRadius = 20f;
 
+        [SerializeField] 
+        private bool assignWaterMaterial = true;
+
         private float TimePeriod => defaultTimePeriod / actorWater.SpeedMultiplier;
         
         private float prevTime;
@@ -95,8 +98,13 @@ namespace ScrollingPlane
                     GameObject obstacle = Instantiate(randomObstacleToSpawn, nextObstaclePos, Quaternion.identity);
                     
                     //We are using regular objects as obstacles -> assign components to them
-                    obstacle.GetComponent<MeshRenderer>().material = obstacleCollection.MaterialToAssign;
-                    obstacle.AddComponent<ScrollingWaterMaterialObject>();
+                    obstacle.GetComponentInChildren<MeshRenderer>().material = obstacleCollection.MaterialToAssign;
+
+                    if (assignWaterMaterial)
+                    {
+                        obstacle.AddComponent<ScrollingWaterMaterialObject>();
+                    }
+                  
                     obstacle.AddComponent<ScrollingObject>();
 
                     prevTime = Time.time;
