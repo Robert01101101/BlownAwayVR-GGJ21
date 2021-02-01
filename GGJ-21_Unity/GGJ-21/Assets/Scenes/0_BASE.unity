@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 1269942587}
     - target: {fileID: 750355201136791272, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
       propertyPath: sceneToLoad
-      value: RobertTestScene
+      value: 7_Rocket_Intro
       objectReference: {fileID: 0}
     - target: {fileID: 4904559947333487037, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
       propertyPath: fadeTime
@@ -192,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5010141890242675563, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
       propertyPath: CUSTOM_PC_DEBUG
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91dc3d63483b0414cb4801179b8876a2, type: 3}
