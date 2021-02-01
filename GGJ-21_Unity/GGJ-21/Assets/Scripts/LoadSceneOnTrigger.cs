@@ -15,7 +15,7 @@ public class LoadSceneOnTrigger : MonoBehaviour
             return;
         }
         
-        SceneLoader.instance.LoadScene(SceneManager.GetSceneByName(sceneName).buildIndex);
+        SceneLoader.instance.LoadScene(SceneLoader.ROCKET_INTRO);
         triggered = true;
     }
 }

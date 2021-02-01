@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorWater: {fileID: 6418022977384195678}
-  gameTime: 180
+  gameTime: 30
   gapBeforeEndingSpawn: 3
   obstacleSpawner: {fileID: 379178172}
   endingObject: {fileID: 4207805431730377685}

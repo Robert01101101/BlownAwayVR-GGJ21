@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorWater: {fileID: 1873029941}
-  gameTime: 180
+  gameTime: 30
   gapBeforeEndingSpawn: 3
   obstacleSpawner: {fileID: 2124919379}
   endingPrefab: {fileID: 8935120610840691851, guid: e2de9ef4033454e82b74c3845fb0ee4b, type: 3}
