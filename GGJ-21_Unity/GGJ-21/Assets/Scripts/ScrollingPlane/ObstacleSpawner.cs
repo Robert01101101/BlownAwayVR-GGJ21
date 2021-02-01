@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,10 +10,10 @@ namespace ScrollingPlane
         private ScrollingActorWater actorWater = default;
         
         [SerializeField]
-        private GameObject obstaclePrefab = default;
+        private ObstacleCollection obstacleCollection = default;
 
         [SerializeField]
-        private float timePeriod = default;
+        private float defaultTimePeriod = default;
 
         [SerializeField] 
         private float minDistance = 10f;
@@ -22,8 +23,54 @@ namespace ScrollingPlane
 
         [SerializeField] 
         private float sideStepRadius = 20f;
+
+        private float TimePeriod => defaultTimePeriod / actorWater.SpeedMultiplier;
         
         private float prevTime;
+
+        private float LargestAxis(Vector3 vec)
+        {
+            if (vec.x > vec.y && vec.x > vec.z)
+            {
+                return vec.x;
+            }
+
+            if (vec.y > vec.x && vec.y > vec.z)
+            {
+                return vec.y;
+            }
+
+            return vec.z;
+        }
+
+        private bool OverlapsContainAnotherScrollingObject(Collider[] overlaps)
+        {
+            foreach (Collider overlap in overlaps)
+            {
+                if (overlap.GetComponent<ScrollingObject>() != null)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool OverlapsWithOtherScrollingObjectAtPos(GameObject objectToPlace, Vector3 position)
+        {
+            Bounds obstacleBounds = objectToPlace.GetComponentInChildren<MeshRenderer>().bounds;
+            float maxMeasure = LargestAxis(obstacleBounds.size);
+            Collider[] overlaps = Physics.OverlapSphere(position, maxMeasure);
+            return OverlapsContainAnotherScrollingObject(overlaps);
+        }
+
+        private Vector3 GenerateRandomObstaclePosition()
+        {
+            Vector3 actorForwardDir = actorWater.transform.forward;
+            Vector3 nextObstaclePos = actorWater.transform.position + actorForwardDir * Random.Range(minDistance, maxDistance);
+            nextObstaclePos += actorWater.transform.right * Random.Range(-sideStepRadius, sideStepRadius);
+            return nextObstaclePos;
+        }
 
         private void Awake()
         {
@@ -33,17 +80,37 @@ namespace ScrollingPlane
         private void Update()
         {
             float timeDiff = Time.time - prevTime;
-            if (timeDiff < timePeriod)
+            if (timeDiff < TimePeriod)
             {
                 return;
             }
             
-            Vector3 actorForwardDir = actorWater.transform.forward;
-            Vector3 nextObstaclePos = actorWater.transform.position + actorForwardDir * Random.Range(minDistance, maxDistance);
-            nextObstaclePos += actorWater.transform.right * Random.Range(-sideStepRadius, sideStepRadius);
-            Instantiate(obstaclePrefab, nextObstaclePos, Quaternion.identity);
+            GameObject randomObstacleToSpawn = obstacleCollection.RandomObstacle;
+            Vector3 nextObstaclePos = GenerateRandomObstaclePosition();
+            int attempts = 10;
+            for (int i = 0; i < attempts; i++)
+            {
+                if (OverlapsWithOtherScrollingObjectAtPos(randomObstacleToSpawn, nextObstaclePos) == false)
+                {
+                    GameObject obstacle = Instantiate(randomObstacleToSpawn, nextObstaclePos, Quaternion.identity);
+                    
+                    //We are using regular objects as obstacles -> assign components to them
+                    obstacle.GetComponent<MeshRenderer>().material = obstacleCollection.MaterialToAssign;
+                    obstacle.AddComponent<ScrollingWaterMaterialObject>();
+                    obstacle.AddComponent<ScrollingObject>();
 
+                    prevTime = Time.time;
+                    return;
+                }
+
+                nextObstaclePos = GenerateRandomObstaclePosition();
+            }
+            
+            
+            Debug.Log("Failed to place an obstacle");
             prevTime = Time.time;
+
+
         }
     }
 }

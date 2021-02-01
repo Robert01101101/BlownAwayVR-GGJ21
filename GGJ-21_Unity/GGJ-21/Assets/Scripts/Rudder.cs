@@ -23,7 +23,7 @@ public class Rudder : MonoBehaviour
     private bool beingHeld = false;
 
     [System.NonSerialized]
-    float direction; //-1 - L, 1 = R
+    public float direction; //-1 - L, 1 = R
 
     private void Start()
     {
