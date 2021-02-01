@@ -14,7 +14,11 @@ namespace ScrollingPlane
         [SerializeField] 
         private float gapBeforeEndingSpawn = 3f;
 
+        [SerializeField] 
+        private float gapBeforeFinalEnding = 10f;
+
         private float TotalTimeBeforeEnding => gameTime + gapBeforeEndingSpawn;
+        private float TotalTimeBeforeTotalEnding => TotalTimeBeforeEnding + gapBeforeFinalEnding;
         
         [SerializeField]
         private ObstacleSpawner obstacleSpawner = default;
@@ -26,6 +30,7 @@ namespace ScrollingPlane
         private float spawnDistance = 20f;
 
         private float startTime;
+        private bool launchedBoat;
 
         private void Awake()
         {
@@ -40,15 +45,22 @@ namespace ScrollingPlane
                 obstacleSpawner.enabled = false;
             }
 
-            if (passedTime > TotalTimeBeforeEnding)
+            if (passedTime > TotalTimeBeforeEnding && launchedBoat == false)
             {
                 Vector3 actorForwardDir = actorWater.transform.forward;
                 Vector3 nextObstaclePos = actorWater.transform.position + actorForwardDir * spawnDistance;
 
+                endingObject.transform.parent = null;
                 Rigidbody endingRigidbody = endingObject.GetComponent<Rigidbody>();
                 endingRigidbody.isKinematic = false;
-                endingRigidbody.AddForce(actorForwardDir*10f, ForceMode.Impulse);
+                endingRigidbody.AddForce(actorForwardDir*5f, ForceMode.Impulse);
+                launchedBoat = true;
+            }
+
+            if (passedTime > TotalTimeBeforeTotalEnding)
+            {
                 enabled = false;
+                SceneLoader.instance.LoadScene(SceneLoader.PAPERBOAT_INTRO);
             }
         }
     }
