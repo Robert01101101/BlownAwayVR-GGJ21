@@ -12,7 +12,7 @@ public enum Trigger
 public class Rudder : MonoBehaviour
 {
     public Transform handDetection;
-    public Transform rotationAxisTransform;
+    public Transform angleReference;
     Transform hand;
     Trigger currentTrigger;
 
@@ -84,8 +84,16 @@ public class Rudder : MonoBehaviour
         transform.LookAt(hand);
 
         //output steering value between -1 to 1
-        Vector3 crossProduct = Vector3.Cross(rudderNeutralPosition, transform.forward);
-        direction = mapVal(crossProduct.z, .4f, -.4f, -1, 1, true);
+        //Vector3 crossProduct = Vector3.Cross(rudderNeutralPosition, transform.forward); (old, broken approach)
+        Vector3 heading = (handDetection.position - angleReference.position).normalized;
+        float dot = Vector3.Dot(heading, angleReference.transform.forward);
+
+        //dot: (-1) = L, 1 = R
+
+        float distance = (handDetection.position - angleReference.position).magnitude;
+        //reduce weight of right side
+        if (dot > 0) distance = distance *= .4f;
+        direction = mapVal(dot * distance, -.2f,.2f, -1, 1, true);
 
         DebugCanvas.DebugLog(direction.ToString());
     }
